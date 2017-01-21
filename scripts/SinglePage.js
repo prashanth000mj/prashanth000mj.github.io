@@ -2,7 +2,7 @@
 class SinglePage extends React.Component {
     render (){
         return (
-            <h2> Hello World </h2>
+            <h2>Under Construction...</h2>
         );
     }
 }
