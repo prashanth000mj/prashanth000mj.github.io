@@ -32,7 +32,7 @@ const QuickIntro = () => {
                 </a>
             </Tooltip>
             <Tooltip title="resume">
-                <a href="mailto://prashanth000mj@gmail.com" aria-label="resume">
+                <a href="mailto:prashanth000mj@gmail.com" aria-label="resume">
                     <InsertDriveFileIcon fontSize='large' className="social-icon"/>
                 </a>
             </Tooltip>
