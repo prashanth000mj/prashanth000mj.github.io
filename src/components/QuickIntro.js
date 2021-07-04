@@ -28,7 +28,7 @@ const QuickIntro = () => {
                 </a>
             </Tooltip>
             <Tooltip title="email">
-                <a href="mailto://prashanth000mj@gmail.com" aria-label="email">
+                <a href="mailto:prashanth000mj@gmail.com" aria-label="email">
                     <EmailIcon fontSize='large' className="social-icon"/>
                 </a>
             </Tooltip>
