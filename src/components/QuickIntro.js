@@ -4,6 +4,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import NavigationIcon from '@material-ui/icons/Navigation';
 import Tooltip from '@material-ui/core/Tooltip';
 import './QuickIntro.css';
 
@@ -37,7 +38,7 @@ const QuickIntro = () => {
                 </a>
             </Tooltip>
             <Tooltip title="know more">
-                <MoreVertIcon fontSize='large' className="social-icon"/>
+                <NavigationIcon fontSize='large' className="social-icon"/>
             </Tooltip>
         </section>
     </div>);
