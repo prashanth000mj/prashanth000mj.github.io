@@ -10,7 +10,7 @@ import './QuickIntro.css';
 const QuickIntro = () => {
     return(<div>
         <article className="main-article">
-            <h5>Hello,</h5>
+            <h5>Hello, welcome to the personal website of</h5>
             <h2>Prashanth Mandya Jayaramu</h2>
             <h3>Staff Software Engineer</h3>
             <h5>Currently working at <a href="https://geaviation.com" target="_blank" rel="noreferrer" class="ge-aviation">GE Aviation</a></h5>
