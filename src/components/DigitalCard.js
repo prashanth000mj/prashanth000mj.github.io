@@ -18,6 +18,15 @@ const XIcon = () => (
     </svg>
 );
 
+const trackEvent = (action, category, label) => {
+    if (window.gtag) {
+        window.gtag('event', action, {
+            'event_category': category,
+            'event_label': label
+        });
+    }
+};
+
 const DigitalCard = () => {
     const [showQR, setShowQR] = useState(false);
 
@@ -79,7 +88,12 @@ const DigitalCard = () => {
                     <p className="bio">{profileData.bio}</p>
 
                     <div className="action-bar single-btn">
-                        <a href="/prashanth000mj.vcf" download="prashanth000mj.vcf" className="save-contact-btn">
+                        <a
+                            href="/prashanth000mj.vcf"
+                            download="prashanth000mj.vcf"
+                            className="save-contact-btn"
+                            onClick={() => trackEvent('download_vcf', 'engagement', 'Save Contact')}
+                        >
                             <PersonAdd className="btn-icon" />
                             Save Contact
                         </a>
@@ -102,6 +116,7 @@ const DigitalCard = () => {
                             rel="noopener noreferrer"
                             className="link-button"
                             style={{ '--hover-color': link.color }}
+                            onClick={() => trackEvent('click_link', 'outbound', link.title)}
                         >
                             <span className="link-icon">{link.icon}</span>
                             <span className="link-title">{link.title}</span>
@@ -114,7 +129,10 @@ const DigitalCard = () => {
                         social.onClick ? (
                             <button
                                 key={index}
-                                onClick={social.onClick}
+                                onClick={() => {
+                                    social.onClick();
+                                    trackEvent('toggle_qr', 'engagement', 'Share');
+                                }}
                                 aria-label={social.label}
                                 className={`social-link btn-reset ${social.active ? 'active' : ''}`}
                             >
@@ -128,6 +146,7 @@ const DigitalCard = () => {
                                 className="social-link"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackEvent('click_social', 'outbound', social.label)}
                             >
                                 {social.icon}
                             </a>
