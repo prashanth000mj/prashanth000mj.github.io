@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     GitHub,
     LinkedIn,
@@ -7,7 +7,8 @@ import {
     Language,
     Instagram,
     PersonAdd,
-    Phone
+    Phone,
+    Share
 } from '@material-ui/icons';
 import './DigitalCard.css';
 
@@ -18,6 +19,8 @@ const XIcon = () => (
 );
 
 const DigitalCard = () => {
+    const [showQR, setShowQR] = useState(false);
+
     const profileData = {
         name: "Prashanth Mandya Jayaramu",
         role: "Principal Software Engineer",
@@ -53,6 +56,12 @@ const DigitalCard = () => {
         socials: [
             { icon: <Email />, url: "mailto:prashanth000mj@gmail.com", label: "Email" },
             { icon: <Phone />, url: "tel:+919738270642", label: "Phone" },
+            {
+                icon: <Share />,
+                onClick: () => setShowQR(!showQR),
+                label: "Share",
+                active: showQR
+            },
             { icon: <XIcon />, url: "https://x.com/prashanth000mj", label: "X" },
             { icon: <Instagram />, url: "https://instagram.com/prashanth000mj", label: "Instagram" }
         ]
@@ -69,10 +78,19 @@ const DigitalCard = () => {
                     <p className="role">{profileData.role} @ <span className="company">{profileData.company}</span></p>
                     <p className="bio">{profileData.bio}</p>
 
-                    <a href="/prashanth000mj.vcf" download="prashanth000mj.vcf" className="save-contact-btn">
-                        <PersonAdd className="btn-icon" />
-                        Save Contact
-                    </a>
+                    <div className="action-bar single-btn">
+                        <a href="/prashanth000mj.vcf" download="prashanth000mj.vcf" className="save-contact-btn">
+                            <PersonAdd className="btn-icon" />
+                            Save Contact
+                        </a>
+                    </div>
+
+                    <div className={`qr-reveal ${showQR ? 'active' : ''}`}>
+                        <div className="qr-container">
+                            <img src="/qrcode.png" alt="QR Code" className="qr-image" />
+                            <p className="qr-text">Scan to Connect</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="links-section">
@@ -93,16 +111,27 @@ const DigitalCard = () => {
 
                 <div className="social-footer">
                     {profileData.socials.map((social, index) => (
-                        <a
-                            key={index}
-                            href={social.url}
-                            aria-label={social.label}
-                            className="social-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            {social.icon}
-                        </a>
+                        social.onClick ? (
+                            <button
+                                key={index}
+                                onClick={social.onClick}
+                                aria-label={social.label}
+                                className={`social-link btn-reset ${social.active ? 'active' : ''}`}
+                            >
+                                {social.icon}
+                            </button>
+                        ) : (
+                            <a
+                                key={index}
+                                href={social.url}
+                                aria-label={social.label}
+                                className="social-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {social.icon}
+                            </a>
+                        )
                     ))}
                 </div>
             </div>

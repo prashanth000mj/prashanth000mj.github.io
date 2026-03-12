@@ -74,22 +74,36 @@
     line-height: 1.6;
     color: var(--secondary);
     max-width: 280px;
-    margin: 0 auto 24px auto;
+    margin: 0 auto 32px auto;
+}
+
+.action-bar {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.action-bar.single-btn .save-contact-btn {
+    flex: none;
+    width: auto;
+    min-width: 200px;
 }
 
 .save-contact-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
+    padding: 12px 28px;
     background: var(--accent);
     color: #000;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 15px;
     transition: var(--transition);
-    box-shadow: 0 10px 20px -5px rgba(255, 183, 0, 0.3);
+    box-shadow: 0 10px 20px -5px rgba(255, 183, 0, 0.4);
 }
 
 .save-contact-btn:hover {
@@ -98,9 +112,63 @@
     background: #ffc837;
 }
 
+.btn-reset {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-reveal {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+}
+
+.qr-reveal.active {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 24px;
+}
+
+.qr-container {
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+.qr-image {
+    width: 140px;
+    height: 140px;
+    filter: contrast(1.1) brightness(1.1);
+    border-radius: 12px;
+    padding: 8px;
+    background: #222;
+}
+
+.qr-text {
+    color: var(--secondary);
+    font-size: 11px;
+    font-weight: 600;
+    margin: 16px 0 0 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 .btn-icon {
     margin-right: 8px;
-    font-size: 20px !important;
+    font-size: 18px !important;
 }
 
 .links-section {
